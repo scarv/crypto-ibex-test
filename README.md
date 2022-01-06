@@ -4,7 +4,7 @@
 
 ## Overview
 
-This is a repository for the source codes to verify the modified Ibex core supporting the Scalar Cryptography Extension (Zk V1.0.0) [1][2].
+This is a repository for the source codes to verify the modified Ibex core supporting the Scalar Cryptography Extension (Zk V1.0.0) [1],[2].
 The verification consists of two test cases. The first one is random custom test, and the other is based on the compliance test.
 
 
