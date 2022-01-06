@@ -83,10 +83,16 @@ The verification consists of two test cases. The first one is random custom test
   ```sh
   make -C src/sw/ -B run-riscv-arch-test IBEX_CONFIG=experimental-maxperf-pmp-zkn
   ```
+  Or
+
+  ```sh
+  make -C src/sw/ -B run-riscv-arch-test IBEX_CONFIG=experimental-maxperf-pmp-zks
+  ```
 
 ## References
 
 [1] RISC-V Scalar Cryptography Extension Specification, https://github.com/riscv/riscv-crypto/releases/tag/v1.0.0-rc6-scalar/riscv-crypto-spec-scalar-1.0.0-rc6.pdf 
+
 [2] Implementing the Draft RISC-V Scalar Cryptography Extensions, https://dl.acm.org/doi/pdf/10.1145/3458903.3458904
 
 ## Acknowledgements
