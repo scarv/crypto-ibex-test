@@ -46,8 +46,8 @@ The verification consists of two test cases. The first one is random custom test
     export IBEX_REPO=./build/ibex
     ```
 
-  - Build the Crypto-supported RISC-V toolchain 
-
+  - Build the Crypto-supported RISC-V toolchain
+    [Warning!: it requires about 11 GB and takes 45 mins to clone and build the toolchain]
     ```sh
     make -C toolchain/ get-gnu-toolchain
     ```
@@ -83,7 +83,7 @@ The verification consists of two test cases. The first one is random custom test
   ```sh
   make -C src/sw/ -B run-riscv-arch-test IBEX_CONFIG=experimental-maxperf-pmp-zkn
   ```
-  Or
+  The test is failed at the Zks instructions, i.e., sm3* and sm4* instructions. These instructions are checked as follows;
 
   ```sh
   make -C src/sw/ -B run-riscv-arch-test IBEX_CONFIG=experimental-maxperf-pmp-zks
