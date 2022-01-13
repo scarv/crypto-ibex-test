@@ -31,11 +31,11 @@ The verification consists of two test cases. The first one is random custom test
 
 - For seting up the repository
 
-  - Clone the repository and setup environment
+  - Clone the repository and setup environment 
   
     ```sh
-    git clone https://github.com/scarv/crypto-ibex ./crypto-ibex
-    cd ./crypto-ibex
+    git clone https://github.com/scarv/crypto-ibex-test ./crypto-ibex-test
+    cd ./crypto-ibex-test
     source bin/conf.sh
     ```
 
@@ -47,7 +47,9 @@ The verification consists of two test cases. The first one is random custom test
     ```
 
   - Build the Crypto-supported RISC-V toolchain
-    [Warning!: it requires about 11 GB and takes 45 mins to clone and build the toolchain]
+
+    [Warning!: it requires about 11 GB on hard disk and takes 45 mins to clone and build the toolchain]
+
     ```sh
     make -C toolchain/ get-gnu-toolchain
     ```
