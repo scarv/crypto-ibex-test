@@ -18,7 +18,7 @@ endif
 export PORT ?= /dev/ttyUSB0
 
 # =============================================================================
-#include ${REPO_HOME}/src/hw/fpga/Makefile.in
+include ${REPO_HOME}/src/hw/fpga/Makefile.in
 include ${REPO_HOME}/src/hw/ibex/Makefile.in
 # =============================================================================
 
