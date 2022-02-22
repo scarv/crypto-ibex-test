@@ -162,13 +162,13 @@ wire [31:0] mem_rdata;
 blk_mem_gen_0 u_ram (
   .clka ( clk_50M               ),  // input wire clka
   .wea  ( data_be & {4{mem_we}} ),  // input wire [3 : 0] wea
-  .addra( data_addr[16:2]       ),  // input wire [14 : 0] addra
+  .addra( data_addr[19:2]       ),  // input wire [14 : 0] addra
   .dina ( data_wdata            ),  // input wire [31 : 0] dina
   .douta(  mem_rdata            ),  // output wire [31 : 0] douta
   
   .clkb ( clk_50M            ),     // input wire clkb
   .web  ( 4'b0000            ),     // input wire [3 : 0] wea
-  .addrb( instr_addr[16:2]   ),     // input wire [14 : 0] addrb
+  .addrb( instr_addr[19:2]   ),     // input wire [14 : 0] addrb
   .dinb ( 32'h0000           ),     // input wire [31 : 0] dinb
   .doutb( instr_rdata        )      // output wire [31 : 0] doutb
 );

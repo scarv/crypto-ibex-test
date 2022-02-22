@@ -7,15 +7,13 @@
 #--------------------------------------------------------------------
 # Collect crypto-ibex Verilog
 #--------------------------------------------------------------------
-fpga-ibex-rtl = $(IBEX_REPO)/build/lowrisc_ibex_ibex_simple_system_0/src/lowrisc_ibex_ibex_core_0.1/rtl
+#fpga-ibex-rtl = $(IBEX_REPO)/build/lowrisc_ibex_ibex_simple_system_0/src/lowrisc_ibex_ibex_core_0.1/rtl
 fpga-ibex-core = $(FPGA_BUILD)/$(VIVADO_PROJECT)/rtl_sources/ibex_core.v
 
-$(SOC)_verilog: $(fpga-ibex-core) $(FPGA)/soc/$(SOC)/system_top_wrapper.v 
+$(SOC)_verilog: $(fpga-ibex-core) $(FPGA)/soc/$(SOC)/rtl/system_top_wrapper.v 
 	mkdir -p $(FPGA_BUILD)/$(VIVADO_PROJECT)/prog-bin
 	cp -f $(FPGA)/soc/$(SOC)/bootrom/bootrom.coe       $(FPGA_BUILD)/$(VIVADO_PROJECT)/prog-bin/
-	cp -f $(FPGA)/soc/$(SOC)/system_top_wrapper.v      $(FPGA_BUILD)/$(VIVADO_PROJECT)/rtl_sources/system_top_wrapper.v
-	cp -f $(FPGA)/soc/$(SOC)/ibex_wrapper.sv           $(FPGA_BUILD)/$(VIVADO_PROJECT)/rtl_sources/ibex_wrapper.sv
-	cp -f $(ibex_support_src)                          $(FPGA_BUILD)/$(VIVADO_PROJECT)/rtl_sources/
+	cp -f $(FPGA)/soc/$(SOC)/rtl/system_top_wrapper.v  $(FPGA_BUILD)/$(VIVADO_PROJECT)/rtl_sources/system_top_wrapper.v
 
 $(fpga-ibex-core) : 
 	mkdir -p $(FPGA_BUILD)/$(VIVADO_PROJECT)/rtl_sources

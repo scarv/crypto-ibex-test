@@ -4,12 +4,15 @@
 # can be found at https://opensource.org/licenses/MIT (or should be included 
 # as LICENSE.txt within the associated archive or repository).
 
+TARGET ?= ${REPO_HOME}/src/hw/fpga/soc/crypto-ibex
+FPGA    = $(REPO_HOME)/src/hw/fpga
 
-PROGRAM = ${SW}
-BUILD   = ${REPO_HOME}/build/${SW}
+PROGRAM = test-zks
+BUILD   = ${REPO_HOME}/build
 EXTRA_SRCS := rv32zks.S
-include ${SW_DIR}/common/common.mk
 
+HAL := ${TARGET}/hal
+include ${HAL}/common.mk
 
 
 

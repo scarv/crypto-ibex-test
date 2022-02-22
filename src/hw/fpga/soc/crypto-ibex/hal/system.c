@@ -1,10 +1,4 @@
-#include "soc.h"
-#include <stdint.h>
-#include <string.h>
-#include <stdarg.h>
-#include <stdio.h>
-#include <limits.h>
-#include <sys/signal.h>
+#include "system.h"
 
 #define static_assert(cond) switch(0) { case 0: case !!(long)(cond): ; }
 
@@ -32,7 +26,7 @@ int  putchar(int c){
 }
 
 //! Write a string to a stream with no trailing '\n' character.
-void putstr(char * str){
+int puts(const char *str){
 	int i=0;
 	while (str[i] !=0) {
 		putchar(str[i]);

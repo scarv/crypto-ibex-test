@@ -86,7 +86,7 @@ set_property -dict [list \
                         CONFIG.Write_Width_B {32} \
                         CONFIG.Read_Width_A {32} \
                         CONFIG.Read_Width_B {32} \
-						CONFIG.Write_Depth_A {32768} \
+						CONFIG.Write_Depth_A {262144} \
                         CONFIG.Byte_Size {8} \
                         CONFIG.Use_Byte_Write_Enable {1} \
                         CONFIG.Enable_A {Always_Enabled} \

@@ -1,4 +1,4 @@
-#include "simple_system_common.h"
+#include "system.h"
 #include "aes_common.h"
 
 #define ROL32(x,n) (((x) << (n)) | ((x) >> (32 - (n))))

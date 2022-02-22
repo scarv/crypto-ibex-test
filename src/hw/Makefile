@@ -7,17 +7,17 @@
 ifndef REPO_HOME
   $(error "execute 'source ./bin/conf.sh' to configure environment")
 endif
-ifndef REPO_VERSION
-  $(error "execute 'source ./bin/conf.sh' to configure environment")
-endif
 
 ifndef IBEX_REPO
   $(error "set IBEX_REPO environment variable to point at the Ibex reposistory")
 endif
 
-export PORT ?= /dev/ttyUSB0
+export PORT   ?= /dev/ttyUSB0
+export BOARD  ?= sakura-x
+export RVK    ?= Zkn
 
 # =============================================================================
+include ${REPO_HOME}/src/hw/emul/Makefile.in
 include ${REPO_HOME}/src/hw/fpga/Makefile.in
 include ${REPO_HOME}/src/hw/ibex/Makefile.in
 # =============================================================================

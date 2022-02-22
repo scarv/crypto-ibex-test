@@ -7,6 +7,14 @@
   `define RVFI
 `endif
 
+`ifdef Zkn
+  `define RV32K RV32Zkn
+`elsif Zks
+  `define RV32K RV32Zks
+`else
+  `define RV32K RV32ZkNone
+`endif
+
 /**
  * Top level module of the ibex RISC-V core
  */
@@ -19,7 +27,7 @@ module ibex_wrapper import ibex_pkg::*; #(
   parameter bit          RV32E            = 1'b0,
   parameter rv32m_e      RV32M            = RV32MFast,
   parameter rv32b_e      RV32B            = RV32BNone,
-  parameter rv32zk_e     RV32Zk           = RV32Zkn,
+  parameter rv32zk_e     RV32Zk           = `RV32K,
   parameter regfile_e    RegFile          = RegFileFPGA,
   parameter bit          BranchTargetALU  = 1'b0,
   parameter bit          WritebackStage   = 1'b0,

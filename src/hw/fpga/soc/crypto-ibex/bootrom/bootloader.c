@@ -62,9 +62,12 @@ void puthex(unsigned int tp){
 	}
 }
 
-void txstr(char *st, unsigned int len){
-	unsigned int j;
-	for(j=0;j<len;j++) send_byte_to_host(st[j]);
+void txstr(char *st){
+	int i=0;
+	while (st[i] !=0) {
+		send_byte_to_host(st[i]);
+		i++;
+	}
 }
 
 unsigned int uart_read_int() {
@@ -104,7 +107,7 @@ void cmd_read_mem(){
 
 	for(i = 0; i < (read_size/4); i ++) {
         read_data  = pro_vec[i];
-        txstr("\n 0x",4); 
+        txstr("\n 0x"); 
         puthex(read_data);
 	}
 
@@ -129,15 +132,13 @@ void bootloader()
     	pro_vec[i] = 0;
     }
 
-	txstr("Bootloader\n",11);
+	txstr("Bootloader\n");
     
 	while(1) {
 
 		cmd = recv_byte_from_host();
-        txstr("Get a cmd..\n",12);
 		switch(cmd) {
 			case(CMD_LOAD):
-                txstr("Load pro...\n",12);
 			    cmd_load_binary();
 				break;
 

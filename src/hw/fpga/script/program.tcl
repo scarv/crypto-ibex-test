@@ -9,7 +9,7 @@ set device [lindex $argv 0]
 puts "BITSTREAM: $bit"
 puts "DEVICE: $device"
 
-open_hw
+open_hw_manager
 connect_hw_server
 set board ""
 

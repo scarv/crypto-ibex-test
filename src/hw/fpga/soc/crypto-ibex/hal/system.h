@@ -1,5 +1,11 @@
-#ifndef SOC_H
-#define SOC_H
+#ifndef SYSTEM_H
+#define SYSTEM_H
+#include <stdint.h>
+#include <string.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <limits.h>
+#include <sys/signal.h>
 
 /* UART */
 #define UART_BASE	  0x70600000
@@ -18,8 +24,8 @@
 
 void uart_init();
 int  putchar(int c);
-void putstr(char * str);
+int  puts(const char *str);
 void puthex(unsigned int tp);
 void puthex64(unsigned long long int tp);
 
-#endif /* SOC_H */
+#endif /* SYSTEM_H */

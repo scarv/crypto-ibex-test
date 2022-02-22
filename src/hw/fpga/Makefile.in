@@ -9,18 +9,12 @@ SHELL := /bin/bash
 export FPGA_BUILD      = $(REPO_HOME)/build/fpga
 export FPGA            = $(REPO_HOME)/src/hw/fpga
 export BOARD          ?= sakura-x
+export RVK            ?= Zkn
 export SOC	           = crypto-ibex
 
-export VIVADO_PROJECT = $(SOC)-imp
-prog_mem       = $(FPGA_BUILD)/$(VIVADO_PROJECT)/prog-bin/prog.mem
+export VIVADO_PROJECT = $(RVK)-$(SOC)-imp
 
 VIVADO = cd $(FPGA_BUILD)/$(VIVADO_PROJECT) && vivado
-UPDMEM = cd $(FPGA_BUILD)/$(VIVADO_PROJECT) && updatemem
-
-#--------------------------------------------------------------------
-# ISE Implementation
-#--------------------------------------------------------------------
-#include ${REPO_HOME}/src/hw/rtl/$(ALG)/$(ARCH)/Makefile.in
 
 #--------------------------------------------------------------------
 # Systems
@@ -31,18 +25,12 @@ include $(FPGA)/soc/$(SOC)/Makefile.in
 #--------------------------------------------------------------------
 # Sources
 #--------------------------------------------------------------------
-ibex_support_src = \
-     $(IBEX_REPO)/rtl/ibex_pkg.sv \
-#    $(wildcard $(ROCKETCHIP_REPO)/vsim/generated-src/$(ROCKET).$(FPGACONFIG)/*.v)
-
 rtl_sources = $(wildcard $(FPGA_BUILD)/$(VIVADO_PROJECT)/rtl_sources/*.v)
 
 #--------------------------------------------------------------------
 # Gathering Verilogs for FPGA Project
 #--------------------------------------------------------------------
 fpga-verilog: $(SOC)_verilog
-
-.PHONY: fpga-verilog
 
 #--------------------------------------------------------------------
 # Project generation
@@ -57,6 +45,8 @@ $(vivado_project_file):
 
 bitstream = $(FPGA_BUILD)/$(VIVADO_PROJECT)/$(VIVADO_PROJECT).runs/impl_1/system_top_wrapper.bit
 bitstream: $(bitstream) 
+	cp -f $< ${REPO_HOME}/build/
+
 $(bitstream) : $(rtl_sources)  $(vivado_project_file)
 	$(VIVADO) -mode batch -source $(FPGA)/script/make_bitstream.tcl -tclargs $(VIVADO_PROJECT) $(FPGA_BUILD)
 
@@ -66,12 +56,9 @@ program-fpga: $(bitstream)
 vivado: $(vivado_project_file)
 	$(VIVADO) $(vivado_project_file) &
 
-.PHONY: vivado-project program-fpga vivado 
+.PHONY: fpga-verilog vivado-project program-fpga vivado 
 
-#--------------------------------------------------------------------
-# Sofware Support
-#--------------------------------------------------------------------
-include ${REPO_HOME}/src/hw/fpga/software/Makefile.in
+
 
 
 
